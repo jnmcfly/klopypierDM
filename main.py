@@ -17,6 +17,16 @@ def getPaper(articles, shopId):
         pass
     return paper
 
-sum = getPaper(articles, "951")
+def getStoreInfo(shopId):
+    url = 'https://store-data-service.services.dmtech.com/stores/item/de/' + shopId
+    req = requests.get(url)
+    print(req.text)
+    info = req.json()["address"]["city"] + ", " + req.json()["address"]["street"]
 
-print(sum)
+    return info
+
+sum = getPaper(articles, "951")
+info = getStoreInfo("951")
+
+print("Noch " + str(sum) + " Packungen Klopapier in Filiale " + info)
+
