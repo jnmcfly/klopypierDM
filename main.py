@@ -1,7 +1,9 @@
 import requests
+import telegram_send
 
-shopId = "951" # schwalmstadt
-#shopId = "2387"
+
+#shopId = "951" # schwalmstadt
+shopId = "2387"
 
 
 articles = ["595420", "708997", "137425", "28171", "485698", "799358", "863567", "452740", "610544", "846857", "709006", "452753", "879536", "452744", "485695", "853483", "594080", "504606", "593761", "525943", "842480", "535981", "127048", "524535"]
@@ -33,7 +35,7 @@ def getStoreInfo(shopId):
 
 
 print("Noch " + str(getPaper(articles, shopId)) + " Packungen Klopapier in Filiale " + getStoreInfo(shopId))
-
+telegram_send.send(messages=["Noch " + str(getPaper(articles, shopId)) + " Packungen Klopapier in Filiale " + getStoreInfo(shopId)])
 
 
 # for arti in articles:
